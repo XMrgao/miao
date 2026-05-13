@@ -13,7 +13,7 @@ pub async fn fetch_sub(link: &str, client: &reqwest::Client) -> AppResult<FetchR
     let res = client
         .get(link)
         .timeout(std::time::Duration::from_secs(30))
-        .header("User-Agent", "clash-meta")
+        .header("User-Agent", "clash-verge/v2.4.7")
         .send()
         .await
         .map_err(|e| AppError::context(format!("Failed to fetch subscription from {}", link), e))?;
