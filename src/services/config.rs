@@ -415,7 +415,7 @@ fn get_config_template() -> serde_json::Value {
             "rules": [
                 {"action": "sniff"},
                 {"protocol": "dns", "action": "hijack-dns"},
-                {"ip_is_private": true, "rule_set": ["chinaip", "chinasite"], "action": "route", "outbound": "direct"}
+                {"ip_is_private": true, "rule_set": ["chinaip", "chinasite"], "action": "route", "outbound": "direct"},
                 {"inbound": "http-in","action": "http-proxy"}
             ],
             "rule_set": [
