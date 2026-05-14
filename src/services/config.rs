@@ -402,7 +402,7 @@ fn get_config_template() -> serde_json::Value {
         },
         "inbounds": [
             {"type": "tun", "tag": "tun-in", "interface_name": "sing-tun", "address": ["172.18.0.1/30"], "mtu": 9000, "auto_route": true, "strict_route": true, "auto_redirect": true},
-            {"type": "direct","tag": "http-in","listen": "::","listen_port": 7890}
+            {"listen": "::","listen_port": 7890,"tag": "http-in","type": "http","set_system_proxy": false}
         ],
         "outbounds": [
             {"type": "selector", "tag": "proxy", "outbounds": []},
@@ -415,8 +415,7 @@ fn get_config_template() -> serde_json::Value {
             "rules": [
                 {"action": "sniff"},
                 {"protocol": "dns", "action": "hijack-dns"},
-                {"ip_is_private": true, "rule_set": ["chinaip", "chinasite"], "action": "route", "outbound": "direct"},
-                {"inbound": "http-in","action": "http-proxy"}
+                {"ip_is_private": true, "rule_set": ["chinaip", "chinasite"], "action": "route", "outbound": "direct"}
             ],
             "rule_set": [
                 {"type": "local", "tag": "chinasite", "format": "binary", "path": "./chinasite.srs"},
